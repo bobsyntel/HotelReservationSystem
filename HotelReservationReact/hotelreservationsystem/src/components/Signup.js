@@ -1,8 +1,13 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import BootstrapNavBar from './BootstrapNavBar';
 class Signup extends Component{
 	constructor(){
 		super();
+		this.state = {
+			value:[]
+		}
+
 		this.handleSignup = this.handleSignup.bind(this);
 	}
 
@@ -22,11 +27,13 @@ class Signup extends Component{
 		 		password
 		 	}
 		 });
-		 signupRequest.then((signupData)=>{
+	    signupRequest.then((signupData)=>{
 		 	console.log(signupData.data.msg);
 		 	if(signupData.data.msg === "SignupSuccessful"){
 		 		localStorage.setItem('token', signupData.data.token);
 		 	   this.props.history.push('/login');
+		 	   
+		 	  
 		 	}
 		 })
 
@@ -35,6 +42,7 @@ class Signup extends Component{
 
 		return(
     <div >
+    		<BootstrapNavBar/>
        <br/>
 		<form className="form-horizontal" onSubmit={this.handleSignup} >
 				  <div class="form-group">
@@ -64,6 +72,8 @@ class Signup extends Component{
 				    </div>
 				  </div>
 		</form>
+
+			
 	</div>
 			)
 	}

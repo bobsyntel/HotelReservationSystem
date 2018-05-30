@@ -29,6 +29,10 @@ class Login extends Component{
 		 	if(loginData.data.msg === "LoginSuccessful"){
 		 		// localStorage.setItem('token', loginData.data.token);
 		 			console.log(loginData.data.msg);
+		 			console.log(loginData.data.id);
+		 			localStorage.setItem('id',loginData.data.id);
+
+		 			console.log("updated id ",localStorage.getItem('id'));
 		 	   this.props.history.push('/roomsearch');
 		 	}
 		 })
@@ -42,7 +46,7 @@ class Login extends Component{
        <br/>
 		<form className="form-horizontal"  onSubmit={this.handleLogin}>
 				  <div class="form-group">
-				    <label for="email" class="col-sm-2 control-label">Email</label>
+				    <label htmlfor="email" class="col-sm-2 control-label">Email</label>
 				    <div class="col-sm-4">
 				      <input type="email" class="form-control" id="email" placeholder="Email"/>
 				    </div>
